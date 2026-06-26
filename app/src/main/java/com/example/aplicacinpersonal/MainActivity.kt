@@ -1,6 +1,7 @@
 package com.example.aplicacinpersonal
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.aplicacinpersonal.data.AppDatabase
+import com.example.aplicacinpersonal.data.SensorEntity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -24,10 +26,25 @@ class MainActivity : AppCompatActivity() {
 
         val tvStatus = findViewById<TextView>(R.id.tvStatus)
         val tvReadings = findViewById<TextView>(R.id.tvReadings)
+        val btnSaveManual = findViewById<Button>(R.id.btnSaveManual)
+
+        val db = AppDatabase.getDatabase(this@MainActivity)
+
+        // Botón para guardar manualmente una lectura de prueba
+        btnSaveManual.setOnClickListener {
+            lifecycleScope.launch {
+                db.sensorDao().insertarLectura(
+                    SensorEntity(
+                        tipo = "Manual",
+                        valor = (60..100).random().toFloat(),
+                        timestamp = System.currentTimeMillis()
+                    )
+                )
+            }
+        }
 
         // Consultar la base de datos periódicamente para mostrar las últimas lecturas
         lifecycleScope.launch {
-            val db = AppDatabase.getDatabase(this@MainActivity)
             while (true) {
                 val lecturas = db.sensorDao().obtenerTodas()
                 if (lecturas.isNotEmpty()) {

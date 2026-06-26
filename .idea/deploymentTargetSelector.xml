@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-06-22T15:04:34.738334500Z">
+        <DropdownSelection timestamp="2026-06-26T18:18:41.573520700Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\jesus\.android\avd\pixel_VanillaIceCream.avd" />
@@ -15,7 +15,7 @@
       </SelectionState>
       <SelectionState runConfigName="reloj">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-06-22T15:04:28.035794800Z">
+        <DropdownSelection timestamp="2026-06-26T18:18:36.382718800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\jesus\.android\avd\pixel_VanillaIceCream.avd" />

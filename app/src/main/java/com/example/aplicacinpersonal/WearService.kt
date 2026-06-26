@@ -37,8 +37,10 @@ class WearService : WearableListenerService() {
         scope.launch {
             // Guardamos el ritmo cardíaco
             db.sensorDao().insertarLectura(SensorEntity(tipo = "Ritmo Cardíaco", valor = ritmo, timestamp = time))
-            // Guardamos el acelerómetro (ejemplo con eje X)
+            // Guardamos los 3 ejes del acelerómetro
             db.sensorDao().insertarLectura(SensorEntity(tipo = "Accel X", valor = ax, timestamp = time))
+            db.sensorDao().insertarLectura(SensorEntity(tipo = "Accel Y", valor = ay, timestamp = time))
+            db.sensorDao().insertarLectura(SensorEntity(tipo = "Accel Z", valor = az, timestamp = time))
         }
     }
 }
